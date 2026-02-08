@@ -45,11 +45,17 @@ export interface WatchCreateInput {
 
 // Mapper from Backend to Frontend
 export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
-    const processedImages = watch.images.map((url: string) =>
-        (url.startsWith('/static/') || url.startsWith('static/'))
-            ? `${BACKEND_URL}${url.startsWith('/') ? '' : '/'}${url}`
-            : url
-    );
+    const processedImages = watch.images.map((url: string) => {
+        // If it's already an absolute URL (starts with http), return as is
+        if (url.startsWith('http')) return url;
+
+        // If it's a relative path starting with /static or static, prepend BACKEND_URL
+        if (url.startsWith('/static/') || url.startsWith('static/')) {
+            return `${BACKEND_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+        }
+
+        return url;
+    });
 
     return {
         id: watch.id,

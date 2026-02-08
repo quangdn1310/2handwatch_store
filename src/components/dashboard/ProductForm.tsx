@@ -116,35 +116,49 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
         }));
     };
 
+    const uploadToCloudinary = async (file: File): Promise<string> => {
+        const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+        const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+
+        if (!cloudName || !uploadPreset) {
+            throw new Error('Cloudinary configuration is missing');
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', uploadPreset);
+
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            {
+                method: 'POST',
+                body: formData,
+            }
+        );
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Cloudinary upload failed');
+        }
+
+        const data = await response.json();
+        return data.secure_url;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         try {
-            const uploadUrl = `${API_BASE_URL}/uploads/`;
             const uploadedUrls: string[] = [];
 
-            // Upload all new files
+            // Upload all new files to Cloudinary
             for (const item of newFiles) {
-                const data = new FormData();
-                data.append('file', item.file);
-
-                const response = await fetch(uploadUrl, {
-                    method: 'POST',
-                    body: data,
-                });
-
-                if (!response.ok) throw new Error(`Failed to upload ${item.file.name}`);
-
-                const result = await response.json();
-                const fullUrl = result.url.startsWith('http')
-                    ? result.url
-                    : `${BACKEND_URL}${result.url}`;
-
-                uploadedUrls.push(fullUrl);
+                const secureUrl = await uploadToCloudinary(item.file);
+                uploadedUrls.push(secureUrl);
             }
 
-            // Combine existing images (that weren't removed) with the new uploaded URLs
+            // Combine existing images with the new Cloudinary URLs
             const finalImages = [...(formData.images || []), ...uploadedUrls];
 
             onSubmit({
@@ -154,9 +168,9 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
 
             // Cleanup local previews
             newFiles.forEach((f) => URL.revokeObjectURL(f.preview));
-        } catch (error) {
+        } catch (error: any) {
             console.error('Submission failed:', error);
-            alert('Failed to upload images or save product. Please check your connection.');
+            alert(`Failed to save product: ${error.message || 'Please check your connection.'}`);
         } finally {
             setIsSubmitting(false);
         }

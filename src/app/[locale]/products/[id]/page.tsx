@@ -4,7 +4,7 @@ import { use, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Button, Badge, Reveal } from '@/components/ui';
+import { Button, Badge, Reveal, ZoomImage } from '@/components/ui';
 import { cn, formatPrice } from '@/lib/utils';
 import { Newsletter, WatchCard } from '@/components/shared';
 import { ROUTES } from '@/constants';
@@ -75,15 +75,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                         {/* Image Gallery */}
                         <Reveal direction="left">
                             <div className="space-y-4">
-                                <div className="relative aspect-square overflow-hidden bg-[var(--color-bg-secondary)] border border-[var(--color-border)] group">
-                                    <Image
-                                        src={selectedImage}
-                                        alt={watch.name}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                </div>
+                                <ZoomImage
+                                    src={selectedImage}
+                                    alt={watch.name}
+                                    className="aspect-square"
+                                    zoomScale={2.5}
+                                />
                                 {watch.images && watch.images.length > 1 && (
                                     <div className="grid grid-cols-4 gap-4">
                                         {watch.images.map((img, idx) => (

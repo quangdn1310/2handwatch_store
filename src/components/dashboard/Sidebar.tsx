@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
@@ -21,12 +21,12 @@ export function Sidebar({ locale }: SidebarProps) {
     const navItems = [
         {
             name: t('overview'),
-            href: `/${locale}/dashboard`,
+            href: '/dashboard',
             icon: DashboardIcon,
         },
         {
             name: t('products'),
-            href: `/${locale}/dashboard/products`,
+            href: '/dashboard/products',
             icon: WatchIcon,
         },
     ];

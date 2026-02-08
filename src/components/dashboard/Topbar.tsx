@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 interface TopbarProps {
     locale: string;
@@ -15,7 +15,7 @@ export function Topbar({ locale }: TopbarProps) {
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
-                        <Link href={`/${locale}`} className="ms-2 flex md:me-24">
+                        <Link href="/" className="ms-2 flex md:me-24">
                             <span className="self-center whitespace-nowrap font-serif text-xl font-bold italic text-gold-gradient">
                                 2HAND WATCH
                             </span>
