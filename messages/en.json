@@ -151,6 +151,11 @@
             "excellent": "Excellent",
             "good": "Good",
             "fair": "Fair"
+        },
+        "statuses": {
+            "available": "Available",
+            "preorder": "Pre-order",
+            "sold": "Sold"
         }
     },
     "collection": {
@@ -212,6 +217,7 @@
                 "brand": "Brand",
                 "price": "Price (VND)",
                 "condition": "Condition",
+                "status": "Status",
                 "year": "Year",
                 "description": "Description",
                 "image": "Image",

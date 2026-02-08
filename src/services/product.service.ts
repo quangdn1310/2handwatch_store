@@ -9,6 +9,7 @@ export interface BackendWatch {
     price: number;
     originalPrice?: number;
     condition: 'like-new' | 'excellent' | 'good' | 'fair';
+    status: 'available' | 'preorder' | 'sold';
     images: string[];
     description: string;
     specifications: {
@@ -30,6 +31,7 @@ export interface WatchCreateInput {
     price: number;
     originalPrice?: number;
     condition: string;
+    status: string;
     images: string[];
     description: string;
     specifications: {
@@ -64,6 +66,7 @@ export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
         price: watch.price,
         originalPrice: watch.originalPrice,
         condition: watch.condition,
+        status: watch.status || 'available',
         image: processedImages[0] || '/images/watches/watch-1.png',
         images: processedImages,
         description: watch.description,

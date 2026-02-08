@@ -47,6 +47,7 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
             brand: initialData?.brand || '',
             price: initialData?.price || 0,
             condition: initialData?.condition || 'excellent',
+            status: initialData?.status || 'available',
             images: processedImages,
             description: initialData?.description || '',
             specifications: initialData?.specifications || defaultSpecs,
@@ -110,9 +111,10 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
     };
 
     const handleSelectChange = (e: { target: { value: string; name?: string } }) => {
+        const name = e.target.name || 'condition';
         setFormData((prev) => ({
             ...prev,
-            condition: e.target.value,
+            [name]: e.target.value,
         }));
     };
 
@@ -183,6 +185,12 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
         { value: 'fair', label: ct('fair') },
     ];
 
+    const statusOptions = [
+        { value: 'available', label: t('statuses.available') },
+        { value: 'preorder', label: t('statuses.preorder') },
+        { value: 'sold', label: t('statuses.sold') },
+    ];
+
     return (
         <form onSubmit={handleSubmit} className="space-y-6 bg-black/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -231,7 +239,20 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
                         options={conditionOptions}
                         value={formData.condition}
                         onChange={handleSelectChange}
+                        name="condition"
                         placeholder={t('condition')}
+                    />
+                </div>
+                <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)]">
+                        {t('status')}
+                    </label>
+                    <Select
+                        options={statusOptions}
+                        value={formData.status}
+                        onChange={handleSelectChange}
+                        name="status"
+                        placeholder={t('status')}
                     />
                 </div>
             </div>

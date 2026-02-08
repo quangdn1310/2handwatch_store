@@ -139,6 +139,13 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         </h4>
                                         <div className="flex items-center gap-2">
                                             <Badge variant="accent">{t(`conditions.${watch.condition}`).toUpperCase()}</Badge>
+                                            {watch.status && watch.status !== 'available' && (
+                                                <Badge
+                                                    variant={watch.status === 'sold' ? 'error' : 'info'}
+                                                >
+                                                    {t(`statuses.${watch.status}`).toUpperCase()}
+                                                </Badge>
+                                            )}
                                             <p className="text-sm text-[var(--color-text-secondary)]">
                                                 {t('authenticated')}
                                             </p>

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { EditIcon, DeleteIcon } from '@/components/icons';
 import { Reveal } from '@/components/ui';
+import { cn } from '@/lib/utils';
 import { WatchCardProps } from '@/components/shared/watch-card';
 
 interface ProductTableProps {
@@ -31,6 +32,9 @@ export function ProductTable({ products, onEdit, onDelete }: ProductTableProps) 
                         </th>
                         <th scope="col" className="px-6 py-4 font-bold tracking-wider">
                             {t('condition')}
+                        </th>
+                        <th scope="col" className="px-6 py-4 font-bold tracking-wider">
+                            Status
                         </th>
                         <th scope="col" className="px-6 py-4 font-bold tracking-wider text-right">
                             {t('actions')}
@@ -63,6 +67,16 @@ export function ProductTable({ products, onEdit, onDelete }: ProductTableProps) 
                             <td className="px-6 py-4">
                                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/10 text-white border border-white/20">
                                     {ct(product.condition)}
+                                </span>
+                            </td>
+                            <td className="px-6 py-4">
+                                <span className={cn(
+                                    "px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider",
+                                    product.status === 'available' && "bg-green-500/10 text-green-500 border-green-500/20",
+                                    product.status === 'preorder' && "bg-blue-500/10 text-blue-500 border-blue-500/20",
+                                    product.status === 'sold' && "bg-red-500/10 text-red-500 border-red-500/20"
+                                )}>
+                                    {product.status || 'available'}
                                 </span>
                             </td>
                             <td className="px-6 py-4 text-right">

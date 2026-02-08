@@ -14,6 +14,7 @@ export interface WatchCardProps {
     price: number;
     originalPrice?: number;
     condition: 'like-new' | 'excellent' | 'good' | 'fair';
+    status?: 'available' | 'preorder' | 'sold';
     year?: string;
     image: string;
     images?: string[];
@@ -49,6 +50,7 @@ export function WatchCard({
     image,
     isNew,
     isFeatured,
+    status = 'available',
 }: WatchCardProps) {
     const t = useTranslations('product');
     const variant = conditionVariants[condition];
@@ -72,8 +74,15 @@ export function WatchCard({
                 </div>
 
                 {/* Condition Badge */}
-                <div className="absolute top-3 right-3">
+                <div className="absolute top-3 right-3 flex flex-col gap-2 items-end">
                     <Badge variant={variant}>{t(`conditions.${condition}`)}</Badge>
+                    {status !== 'available' && (
+                        <Badge
+                            variant={status === 'sold' ? 'error' : 'warning'}
+                        >
+                            {t(`statuses.${status}`).toUpperCase()}
+                        </Badge>
+                    )}
                 </div>
             </div>
 

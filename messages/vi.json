@@ -151,6 +151,11 @@
             "excellent": "Rất tốt",
             "good": "Tốt",
             "fair": "Trung bình"
+        },
+        "statuses": {
+            "available": "Sẵn có",
+            "preorder": "Đặt trước",
+            "sold": "Đã bán"
         }
     },
     "collection": {
@@ -212,6 +217,7 @@
                 "brand": "Thương hiệu",
                 "price": "Giá (VNĐ)",
                 "condition": "Tình trạng",
+                "status": "Trạng thái",
                 "year": "Năm",
                 "description": "Mô tả",
                 "image": "Hình ảnh",
