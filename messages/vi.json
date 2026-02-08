@@ -1,0 +1,183 @@
+{
+    "common": {
+        "explore": "Khám phá bộ sưu tập",
+        "story": "Câu chuyện của chúng tôi",
+        "philosophy": "Triết lý thương hiệu",
+        "scroll": "Cuộn xuống",
+        "viewMore": "Xem thêm",
+        "viewAll": "Xem toàn bộ bộ sưu tập"
+    },
+    "nav": {
+        "home": "Trang chủ",
+        "collection": "Bộ sưu tập",
+        "about": "Giới thiệu",
+        "brands": "Thương hiệu",
+        "faq": "Hỏi đáp",
+        "contact": "Liên hệ",
+        "trending": "Mới & Xu hướng"
+    },
+    "hero": {
+        "subtitle": "Est. 2024 • Tinh hoa vượt thời gian",
+        "title": "Sưu tầm giá trị",
+        "accent": "Thời gian",
+        "description": "Sưu tầm những cỗ máy thời gian hiếm có và đặc biệt, vượt qua mọi thế hệ. Mỗi chiếc đồng hồ đều có linh hồn; mỗi linh hồn đều có một câu chuyện."
+    },
+    "heritage": {
+        "subtitle": "Gìn giữ di sản",
+        "title": "Hơn cả việc xem giờ",
+        "description": "Chúng tôi không chỉ bán đồng hồ; chúng tôi gìn giữ lịch sử. Mỗi kiệt tác trong bộ sưu tập đều được tuyển chọn thủ công vì tính nguyên bản cơ khí, ý nghĩa lịch sử và linh hồn riêng. Những bậc thầy đồng hồ của chúng tôi đảm bảo mỗi nhịp đập luôn chính xác như ngày nó rời xưởng sản xuất.",
+        "cta": "Quy trình tuyển chọn nội bộ"
+    },
+    "arrivals": {
+        "subtitle": "Sản phẩm mới hàng tuần",
+        "title": "Những tuyệt phẩm mới về"
+    },
+    "categories": {
+        "classic": {
+            "title": "Cổ điển thanh lịch",
+            "subtitle": "Đồng hồ Dress"
+        },
+        "rare": {
+            "title": "Những phát hiện hiếm có",
+            "subtitle": "Kiệt tác Grail"
+        },
+        "modern": {
+            "title": "Biểu tượng hiện đại",
+            "subtitle": "Hậu cổ điển"
+        }
+    },
+    "lab": {
+        "subtitle": "Kỹ nghệ chính xác",
+        "title": "Trái tim của sự hoàn hảo",
+        "description": "Mỗi chiếc đồng hồ chúng tôi sở hữu đều được bảo dưỡng bởi các bậc thầy chuyên về đồng hồ vintage. Từ việc căn chỉnh bánh răng vi mô đến phục hồi vỏ, chúng tôi đảm bảo tính thi ca cơ khí của bộ máy được giữ vẹn nguyên.",
+        "stats": {
+            "parts": "Linh kiện nguyên bản",
+            "inspection": "Điểm kiểm định"
+        }
+    },
+    "policies": {
+        "authenticity": {
+            "title": "Đảm bảo nguyên bản",
+            "description": "Mỗi cỗ máy thời gian đều trải qua quy trình kiểm tra 30 điểm và xác thực nghiêm ngặt bởi chuyên gia."
+        },
+        "warranty": {
+            "title": "Bảo hành cơ khí 12 tháng",
+            "description": "Chúng tôi cam kết chất lượng với chính sách bảo hành toàn diện 1 năm cho mọi bộ máy cơ khí."
+        },
+        "shipping": {
+            "title": "Vận chuyển bảo hiểm toàn cầu",
+            "description": "Giao hàng quốc tế miễn phí qua các đơn vị cao cấp, bảo hiểm toàn bộ giá trị món hàng."
+        },
+        "heritage": {
+            "title": "Gìn giữ di sản",
+            "description": "Những cỗ máy được bảo tồn chuyên nghiệp để duy trì tính toàn vẹn lịch sử và giá trị đầu tư."
+        }
+    },
+    "testimonials": {
+        "subtitle": "Cộng đồng",
+        "title": "Tiếng nói của sự ưu tú",
+        "reviews": [
+            {
+                "name": "Alexander Thompson",
+                "location": "London, Anh",
+                "text": "Độ chính xác và tình trạng của chiếc Omega Seamaster 1968 tôi mua đã vượt xa mọi mong đợi. Dịch vụ đặc biệt và quy trình xác thực uy tín."
+            },
+            {
+                "name": "Julianne Dubois",
+                "location": "Paris, Pháp",
+                "text": "Một trải nghiệm thực sự đẳng cấp. Đồng hồ được giao kèm bảo hiểm đầy đủ và cách đóng gói rất tuyệt vời. Tìm thấy những món đồ unisex hiếm ở đây là một niềm vui."
+            },
+            {
+                "name": "Kenji Suzuki",
+                "location": "Tokyo, Nhật Bản",
+                "text": "Tiemdocu.unisex là lựa chọn hàng đầu của tôi về chất lượng phục chế vintage. Những bậc thầy đồng hồ ở đây thực sự yêu cỗ máy này như tôi vậy."
+            }
+        ]
+    },
+    "newsletter": {
+        "title": "Đừng bỏ lỡ những báu vật Vintage",
+        "description": "Đăng ký để nhận quyền tiếp cận sớm các bộ sưu tập hàng tuần và kiến thức đồng hồ học.",
+        "placeholder": "Địa chỉ Email của bạn",
+        "button": "Gia nhập danh sách riêng",
+        "disclaimer": "Chúng tôi tôn trọng quyền riêng tư của bạn. Bạn có thể hủy đăng ký bất cứ lúc nào."
+    },
+    "footer": {
+        "description": "Tôn vinh nghệ thuật thời gian bằng cách kết nối con người, những câu chuyện và những chiếc đồng hồ vintage đặc biệt truyền cảm hứng cho bạn.",
+        "columns": {
+            "products": "Sản phẩm",
+            "company": "Công ty",
+            "legal": "Pháp lý"
+        },
+        "links": {
+            "all": "Tất cả sản phẩm",
+            "sale": "Đang giảm giá",
+            "upcoming": "Sắp ra mắt",
+            "howToBuy": "Cách mua hàng",
+            "support": "Hỗ trợ",
+            "about": "Về chúng tôi",
+            "dealers": "Đại lý",
+            "brands": "Thương hiệu",
+            "faq": "Hỏi đáp",
+            "contact": "Liên hệ",
+            "privacy": "Chính sách bảo mật",
+            "terms": "Điều khoản sử dụng",
+            "cookie": "Chính sách cookie",
+            "settings": "Cài đặt cookie"
+        },
+        "rights": "Bảo lưu mọi quyền."
+    },
+    "product": {
+        "condition": "Tình trạng & Di sản",
+        "authenticated": "Được kiểm định và giám định bởi các chuyên gia đồng hồ hàng đầu của chúng tôi.",
+        "caseMaterial": "Chất liệu vỏ",
+        "movement": "Bộ máy",
+        "caseSize": "Kích thước vỏ",
+        "era": "Kỷ nguyên",
+        "purchaseInquiry": "Yêu cầu tư vấn",
+        "bookViewing": "Đặt lịch xem",
+        "guaranteed": "Đảm bảo chính hãng",
+        "warranty": "Bảo hành 12 tháng",
+        "insured": "Giao hàng bảo hiểm",
+        "relatedTitle": "Có thể bạn sẽ thích",
+        "circa": "Khoảng năm {year}",
+        "newArrival": "Sản phẩm mới",
+        "new": "Mới",
+        "featured": "Nổi bật",
+        "details": "Xem chi tiết",
+        "currentPrice": "Giá hiện tại",
+        "inclusive": "Đã bao gồm thuế & miễn phí vận chuyển toàn cầu",
+        "conditions": {
+            "like-new": "Như mới",
+            "excellent": "Rất tốt",
+            "good": "Tốt",
+            "fair": "Trung bình"
+        }
+    },
+    "collection": {
+        "title": "Bộ sưu tập",
+        "accent": "Vintage",
+        "description": "Khám phá tuyển tập những chiếc đồng hồ vintage đặc biệt của chúng tôi.",
+        "searchPlaceholder": "Tìm kiếm theo thương hiệu, mẫu mã, kỷ nguyên...",
+        "newDrop": "Sản phẩm mới hàng tuần",
+        "showing": "Hiển thị {start}-{end} trên tổng số {total} sản phẩm"
+    },
+    "filter": {
+        "title": "Bộ lọc:",
+        "allBrands": "Tất cả thương hiệu",
+        "allPrices": "Tất cả mức giá",
+        "under5M": "Dưới 5 triệu",
+        "5-10M": "5 - 10 triệu",
+        "10-20M": "10 - 20 triệu",
+        "20-50M": "20 - 50 triệu",
+        "above50M": "Trên 50 triệu",
+        "allConditions": "Tất cả tình trạng",
+        "newest": "Mới nhất",
+        "priceAsc": "Giá: Thấp đến Cao",
+        "priceDesc": "Giá: Cao đến Thấp",
+        "name": "Tên: A-Z"
+    },
+    "instagram": {
+        "follow": "Theo dõi câu chuyện",
+        "viewMore": "Xem thêm trên Instagram"
+    }
+}

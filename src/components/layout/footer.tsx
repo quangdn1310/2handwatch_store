@@ -1,32 +1,36 @@
-import Link from 'next/link';
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { SITE_CONFIG, ROUTES } from '@/constants';
 import { WatchIcon, InstagramIcon, FacebookIcon, TwitterIcon } from '@/components/icons';
 
-const footerLinks = {
-    auctions: [
-        { href: '/all', label: 'All Products' },
-        { href: '/live', label: 'On Sale' },
-        { href: '/upcoming', label: 'Upcoming' },
-        { href: '/how-it-works', label: 'How to Buy' },
-    ],
-    company: [
-        { href: '/support', label: 'Support' },
-        { href: '/about', label: 'About Us' },
-        { href: '/dealers', label: 'Dealers' },
-        { href: '/brands', label: 'Brands' },
-        { href: '/faq', label: 'FAQ' },
-        { href: '/contact', label: 'Contact' },
-    ],
-    legal: [
-        { href: '/privacy', label: 'Privacy Policy' },
-        { href: '/terms', label: 'Terms of Use' },
-        { href: '/cookie', label: 'Cookie Policy' },
-        { href: '/cookies-settings', label: 'Cookie Settings' },
-    ],
-};
-
 export function Footer() {
+    const t = useTranslations('footer');
     const currentYear = new Date().getFullYear();
+
+    const footerLinks = {
+        products: [
+            { href: '/all', label: t('links.all') },
+            { href: '/live', label: t('links.sale') },
+            { href: '/upcoming', label: t('links.upcoming') },
+            { href: '/how-it-works', label: t('links.howToBuy') },
+        ],
+        company: [
+            { href: '/support', label: t('links.support') },
+            { href: '/about', label: t('links.about') },
+            { href: '/dealers', label: t('links.dealers') },
+            { href: '/brands', label: t('links.brands') },
+            { href: '/faq', label: t('links.faq') },
+            { href: '/contact', label: t('links.contact') },
+        ],
+        legal: [
+            { href: '/privacy', label: t('links.privacy') },
+            { href: '/terms', label: t('links.terms') },
+            { href: '/cookie', label: t('links.cookie') },
+            { href: '/cookies-settings', label: t('links.settings') },
+        ],
+    };
 
     return (
         <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
@@ -48,9 +52,7 @@ export function Footer() {
                         </Link>
 
                         <p className="text-sm text-[var(--color-text-secondary)] max-w-sm leading-relaxed">
-                            Celebrating the art of time by connecting people,
-                            stories, and exceptional vintage watches that inspire
-                            you to live in the moment, seize opportunities.
+                            {t('description')}
                         </p>
 
                         {/* Social Links */}
@@ -82,15 +84,16 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* Auctions Column */}
+                    {/* Products Column */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider">
-                            Products
+                            {t('columns.products')}
                         </h4>
                         <ul className="space-y-3">
-                            {footerLinks.auctions.map((link) => (
+                            {footerLinks.products.map((link) => (
                                 <li key={link.href}>
                                     <Link
+                                        // @ts-ignore
                                         href={link.href}
                                         className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
                                     >
@@ -104,12 +107,13 @@ export function Footer() {
                     {/* Company Column */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider">
-                            Company
+                            {t('columns.company')}
                         </h4>
                         <ul className="space-y-3">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
                                     <Link
+                                        // @ts-ignore
                                         href={link.href}
                                         className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
                                     >
@@ -123,12 +127,13 @@ export function Footer() {
                     {/* Legal Column */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider">
-                            Legal
+                            {t('columns.legal')}
                         </h4>
                         <ul className="space-y-3">
                             {footerLinks.legal.map((link) => (
                                 <li key={link.href}>
                                     <Link
+                                        // @ts-ignore
                                         href={link.href}
                                         className="text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors"
                                     >
@@ -145,7 +150,7 @@ export function Footer() {
             <div className="border-t border-[var(--color-border)]">
                 <div className="container py-6">
                     <p className="text-center text-sm text-[var(--color-text-muted)]">
-                        © {currentYear} {SITE_CONFIG.name}. All rights reserved.
+                        © {currentYear} {SITE_CONFIG.name}. {t('rights')}
                     </p>
                 </div>
             </div>

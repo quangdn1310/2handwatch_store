@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui';
 import { Button } from '@/components/ui';
 import { cn, formatPrice } from '@/lib/utils';
@@ -17,11 +20,11 @@ export interface WatchCardProps {
     isFeatured?: boolean;
 }
 
-const conditionLabels = {
-    'like-new': { label: 'Like New', variant: 'success' as const },
-    excellent: { label: 'Excellent', variant: 'accent' as const },
-    good: { label: 'Good', variant: 'info' as const },
-    fair: { label: 'Fair', variant: 'warning' as const },
+const conditionVariants = {
+    'like-new': 'success' as const,
+    excellent: 'accent' as const,
+    good: 'info' as const,
+    fair: 'warning' as const,
 };
 
 export function WatchCard({
@@ -36,7 +39,8 @@ export function WatchCard({
     isNew,
     isFeatured,
 }: WatchCardProps) {
-    const conditionInfo = conditionLabels[condition];
+    const t = useTranslations('product');
+    const variant = conditionVariants[condition];
 
     return (
         <div className="card group">
@@ -52,13 +56,13 @@ export function WatchCard({
 
                 {/* Badges */}
                 <div className="absolute top-3 left-3 flex flex-col gap-2">
-                    {isNew && <Badge variant="accent">New</Badge>}
-                    {isFeatured && <Badge variant="warning">Featured</Badge>}
+                    {isNew && <Badge variant="accent">{t('new')}</Badge>}
+                    {isFeatured && <Badge variant="warning">{t('featured')}</Badge>}
                 </div>
 
                 {/* Condition Badge */}
                 <div className="absolute top-3 right-3">
-                    <Badge variant={conditionInfo.variant}>{conditionInfo.label}</Badge>
+                    <Badge variant={variant}>{t(`conditions.${condition}`)}</Badge>
                 </div>
             </div>
 
@@ -104,14 +108,14 @@ export function WatchCard({
                         )}
                     </div>
                     <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider mt-1">
-                        Current Price
+                        {t('currentPrice')}
                     </p>
                 </div>
 
                 {/* Action Button */}
                 <Link href={`/products/${id}`} className="block pt-2">
                     <Button variant="primary" className="w-full rounded-none font-bold uppercase tracking-widest text-[10px] py-4 h-auto">
-                        View Details
+                        {t('details')}
                     </Button>
                 </Link>
             </div>

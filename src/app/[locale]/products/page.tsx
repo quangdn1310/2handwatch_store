@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button, Select, Reveal } from '@/components/ui';
 import {
   WatchCard,
@@ -13,6 +14,7 @@ import {
 import { mockWatches } from '@/lib/mock-data';
 
 export default function ProductsPage() {
+  const t = useTranslations('collection');
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
   const totalProducts = 206;
@@ -26,11 +28,11 @@ export default function ProductsPage() {
           <Reveal direction="up">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-                <span className="text-white">vintage </span>
-                <span className="text-gold-gradient italic">Collection</span>
+                <span className="text-white">{t('title')} </span>
+                <span className="text-gold-gradient italic">{t('accent')}</span>
               </h1>
               <p className="text-[var(--color-text-secondary)] text-lg font-light tracking-wide max-w-2xl">
-                Discover our selection of exceptional vintage watches.
+                {t('description')}
               </p>
             </div>
           </Reveal>
@@ -40,10 +42,10 @@ export default function ProductsPage() {
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row items-center gap-4">
                 <div className="flex-1 w-full">
-                  <SearchBar placeholder="Search by brand, model, era..." />
+                  <SearchBar placeholder={t('searchPlaceholder')} />
                 </div>
                 <Button variant="primary" className="h-[54px] px-8 font-bold uppercase tracking-[0.2em] text-xs whitespace-nowrap hidden md:flex">
-                  New Weekly Drop
+                  {t('newDrop')}
                 </Button>
               </div>
 
@@ -58,8 +60,12 @@ export default function ProductsPage() {
           <Reveal direction="up" delay={300}>
             <div className="flex items-center justify-between text-[10px] text-[var(--color-text-muted)] uppercase tracking-[0.2em] font-bold">
               <p>
-                Showing <span className="text-white">1-12</span> of{' '}
-                <span className="text-white">{totalProducts}</span> watches
+                {t.rich('showing', {
+                  start: 1,
+                  end: 12,
+                  total: totalProducts,
+                  span: (chunks) => <span className="text-white">{chunks}</span>
+                })}
               </p>
             </div>
           </Reveal>

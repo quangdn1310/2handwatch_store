@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface InstagramPost {
     id: string;
@@ -31,6 +32,7 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export function InstagramFeed({ posts = defaultPosts }: InstagramFeedProps) {
+    const t = useTranslations('instagram');
     return (
         <section className="py-24 bg-black">
             <div className="container space-y-12">
@@ -58,7 +60,7 @@ export function InstagramFeed({ posts = defaultPosts }: InstagramFeedProps) {
                 {/* Link Area */}
                 <div className="text-center pt-8">
                     <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-[0.3em] font-bold mb-4">
-                        Follow the story
+                        {t('follow')}
                     </p>
                     <Link
                         href="https://instagram.com"
@@ -66,7 +68,7 @@ export function InstagramFeed({ posts = defaultPosts }: InstagramFeedProps) {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-white hover:text-[var(--color-accent)] transition-colors font-serif italic text-lg"
                     >
-                        View more on Instagram
+                        {t('viewMore')}
                     </Link>
                 </div>
             </div>

@@ -1,0 +1,183 @@
+{
+    "common": {
+        "explore": "Explore Collection",
+        "story": "Our Story",
+        "philosophy": "Our Philosophy",
+        "scroll": "Scroll",
+        "viewMore": "View More",
+        "viewAll": "View Full Collection"
+    },
+    "nav": {
+        "home": "Home",
+        "collection": "Collection",
+        "about": "About",
+        "brands": "Brands",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "trending": "New & Trending"
+    },
+    "hero": {
+        "subtitle": "Est. 2024 • Timeless Excellence",
+        "title": "The Art of",
+        "accent": "Vintage Time",
+        "description": "Curating rare, exceptional timepieces that transcend generations. Every watch has a soul; every soul has a story."
+    },
+    "heritage": {
+        "subtitle": "Heritage Stewardship",
+        "title": "Beyond Just Keeping Time",
+        "description": "We don't just sell watches; we preserve history. Each piece in our collection is hand-selected for its mechanical integrity, historical significance, and soul. Our master watchmakers ensure that every tick remains as precise as the day it left the manufacture.",
+        "cta": "Internal Selection Process"
+    },
+    "arrivals": {
+        "subtitle": "New Weekly Drop",
+        "title": "The Curated Arrivals"
+    },
+    "categories": {
+        "classic": {
+            "title": "Classic Elegance",
+            "subtitle": "Dress Watches"
+        },
+        "rare": {
+            "title": "Rare Discoveries",
+            "subtitle": "Grail Pieces"
+        },
+        "modern": {
+            "title": "Modern Icons",
+            "subtitle": "Post-Retro"
+        }
+    },
+    "lab": {
+        "subtitle": "Precision Engineering",
+        "title": "The Heart of Excellence",
+        "description": "Every timepiece we acquire is serviced by master watchmakers who specialize in vintage horology. From microscopic gear alignment to case restoration, we ensure that the mechanical poeticism of the movement remains untainted.",
+        "stats": {
+            "parts": "Original Parts",
+            "inspection": "Point Inspection"
+        }
+    },
+    "policies": {
+        "authenticity": {
+            "title": "Guaranteed Authenticity",
+            "description": "Every timepiece undergoes a rigorous 30-point inspection and authentication by our master watchmakers."
+        },
+        "warranty": {
+            "title": "12-Month Mechanical Warranty",
+            "description": "We stand behind our collection with a comprehensive one-year warranty on all mechanical movements."
+        },
+        "shipping": {
+            "title": "Fully Insured Shipping",
+            "description": "Complementary worldwide shipping via premium couriers, fully insured for your peace of mind."
+        },
+        "heritage": {
+            "title": "Heritage Stewardship",
+            "description": "Expertly preserved timepieces that maintain their historical integrity and investment value."
+        }
+    },
+    "testimonials": {
+        "subtitle": "The Collective",
+        "title": "Voices of Excellence",
+        "reviews": [
+            {
+                "name": "Alexander Thompson",
+                "location": "London, UK",
+                "text": "The precision and condition of the 1968 Omega Seamaster I purchased exceeded all expectations. Exceptional service and authenticity verification."
+            },
+            {
+                "name": "Julianne Dubois",
+                "location": "Paris, France",
+                "text": "A truly premium experience. The watch arrived fully insured and the presentation was magnificent. Finding rare unisex pieces here is a joy."
+            },
+            {
+                "name": "Kenji Suzuki",
+                "location": "Tokyo, Japan",
+                "text": "Tiemdocu.unisex is my go-to for vintage restoration quality. Their master watchmakers clearly love these machines as much as I do."
+            }
+        ]
+    },
+    "newsletter": {
+        "title": "Don't Miss a Single Vintage Treasure",
+        "description": "Subscribe to receive early access to our curated weekly drops and horological insights.",
+        "placeholder": "Your Email Address",
+        "button": "Join Private List",
+        "disclaimer": "We respect your privacy. Unsubscribe at any time."
+    },
+    "footer": {
+        "description": "Celebrating the art of time by connecting people, stories, and exceptional vintage watches that inspire you to live in the moment, seize opportunities.",
+        "columns": {
+            "products": "Products",
+            "company": "Company",
+            "legal": "Legal"
+        },
+        "links": {
+            "all": "All Products",
+            "sale": "On Sale",
+            "upcoming": "Upcoming",
+            "howToBuy": "How to Buy",
+            "support": "Support",
+            "about": "About Us",
+            "dealers": "Dealers",
+            "brands": "Brands",
+            "faq": "FAQ",
+            "contact": "Contact",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Use",
+            "cookie": "Cookie Policy",
+            "settings": "Cookie Settings"
+        },
+        "rights": "All rights reserved."
+    },
+    "product": {
+        "condition": "Condition & Heritage",
+        "authenticated": "Authenticated and inspected by our master watchmakers.",
+        "caseMaterial": "Case Material",
+        "movement": "Movement",
+        "caseSize": "Case Size",
+        "era": "Era",
+        "purchaseInquiry": "Purchase Inquiry",
+        "bookViewing": "Book a Viewing",
+        "guaranteed": "Guaranteed Authenticity",
+        "warranty": "12-Month Warranty",
+        "insured": "Insured Delivery",
+        "relatedTitle": "You May Also Seek",
+        "circa": "Circa {year}",
+        "newArrival": "New Arrival",
+        "new": "New",
+        "featured": "Featured",
+        "details": "View Details",
+        "currentPrice": "Current Price",
+        "inclusive": "Inclusive of all taxes & free worldwide shipping",
+        "conditions": {
+            "like-new": "Like New",
+            "excellent": "Excellent",
+            "good": "Good",
+            "fair": "Fair"
+        }
+    },
+    "collection": {
+        "title": "vintage",
+        "accent": "Collection",
+        "description": "Discover our selection of exceptional vintage watches.",
+        "searchPlaceholder": "Search by brand, model, era...",
+        "newDrop": "New Weekly Drop",
+        "showing": "Showing {start}-{end} of {total} watches"
+    },
+    "filter": {
+        "title": "Filter:",
+        "allBrands": "All Brands",
+        "allPrices": "All Prices",
+        "under5M": "Under 5M VND",
+        "5-10M": "5M - 10M VND",
+        "10-20M": "10M - 20M VND",
+        "20-50M": "20M - 50M VND",
+        "above50M": "Above 50M VND",
+        "allConditions": "All Conditions",
+        "newest": "Newest First",
+        "priceAsc": "Price: Low to High",
+        "priceDesc": "Price: High to Low",
+        "name": "Name: A-Z"
+    },
+    "instagram": {
+        "follow": "Follow the story",
+        "viewMore": "View more on Instagram"
+    }
+}

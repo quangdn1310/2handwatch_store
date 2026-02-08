@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Button, Reveal } from '@/components/ui';
 import { ROUTES } from '@/constants';
 import {
@@ -14,6 +15,7 @@ import {
 import { mockWatches } from '@/lib/mock-data';
 
 export default function LandingPage() {
+  const t = useTranslations();
   const featuredWatches = mockWatches.filter(w => w.isFeatured).slice(0, 4);
 
   return (
@@ -36,18 +38,18 @@ export default function LandingPage() {
           <div className="space-y-6 max-w-4xl mx-auto">
             <Reveal direction="up" delay={200}>
               <h4 className="text-[var(--color-accent)] font-bold tracking-[0.5em] uppercase text-xs">
-                Est. 2024 • Timeless Excellence
+                {t('hero.subtitle')}
               </h4>
             </Reveal>
             <Reveal direction="up" delay={400}>
-              <h1 className="text-7xl md:text-[10rem] font-serif font-bold text-white leading-[0.85] tracking-[-0.06em]">
-                The Art of <br />
-                <span className="text-gold-gradient italic px-2">Vintage Time</span>
+              <h1 className="text-6xl md:text-[9rem] font-serif font-bold text-white leading-[0.85] tracking-[-0.06em]">
+                {t('hero.title')} <br />
+                <span className="text-gold-gradient italic px-2">{t('hero.accent')}</span>
               </h1>
             </Reveal>
             <Reveal direction="up" delay={600}>
               <p className="text-[var(--color-text-secondary)] text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-                Curating rare, exceptional timepieces that transcend generations. Every watch has a soul; every soul has a story.
+                {t('hero.description')}
               </p>
             </Reveal>
           </div>
@@ -56,12 +58,12 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
               <Link href={ROUTES.products}>
                 <Button variant="primary" className="h-16 px-12 font-bold uppercase tracking-[0.2em] text-xs rounded-none min-w-[240px]">
-                  Explore Collection
+                  {t('common.explore')}
                 </Button>
               </Link>
               <Link href="/about">
                 <Button variant="outline" className="h-16 px-12 font-bold uppercase tracking-[0.2em] text-xs rounded-none border-white/20 hover:border-[var(--color-accent)] min-w-[240px]">
-                  Our Philosophy
+                  {t('common.philosophy')}
                 </Button>
               </Link>
             </div>
@@ -88,16 +90,16 @@ export default function LandingPage() {
           <div className="lg:w-1/2 flex items-center bg-[var(--color-bg-secondary)] p-12 lg:p-24">
             <Reveal direction="right" className="space-y-8">
               <h4 className="text-[var(--color-accent)] font-bold tracking-[0.3em] uppercase text-xs">
-                Heritage Stewardship
+                {t('heritage.subtitle')}
               </h4>
               <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-                Beyond Just <br /><span className="italic">Keeping Time</span>
+                {t('heritage.title')}
               </h2>
               <p className="text-[var(--color-text-secondary)] text-lg font-light leading-relaxed max-w-lg">
-                We don't just sell watches; we preserve history. Each piece in our collection is hand-selected for its mechanical integrity, historical significance, and soul. Our master watchmakers ensure that every tick remains as precise as the day it left the manufacture.
+                {t('heritage.description')}
               </p>
               <Button variant="outline" className="h-14 px-8 font-bold uppercase tracking-[0.2em] text-[10px] rounded-none border-[var(--color-border)]">
-                Internal Selection Process
+                {t('heritage.cta')}
               </Button>
             </Reveal>
           </div>
@@ -110,15 +112,15 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <Reveal direction="left" className="space-y-4">
               <h4 className="text-[var(--color-accent)] font-bold tracking-[0.3em] uppercase text-xs">
-                New Weekly Drop
+                {t('arrivals.subtitle')}
               </h4>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-white italic">
-                The Curated <span className="text-gold-gradient non-italic px-1">Arrivals</span>
+                {t('arrivals.title')}
               </h2>
             </Reveal>
             <Reveal direction="right">
               <Link href={ROUTES.products} className="group flex items-center gap-4 text-white hover:text-[var(--color-accent)] transition-colors">
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em]">View Full Collection</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{t('common.viewAll')}</span>
                 <div className="w-10 h-px bg-white group-hover:bg-[var(--color-accent)] transition-all group-hover:w-16" />
               </Link>
             </Reveal>
@@ -140,34 +142,31 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Classic Elegance',
-                subtitle: 'Dress Watches',
+                id: 'classic',
                 img: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=800&auto=format&fit=crop'
               },
               {
-                title: 'Rare Discoveries',
-                subtitle: 'Grail Pieces',
+                id: 'rare',
                 img: 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=694&auto=format&fit=crop'
               },
               {
-                title: 'Modern Icons',
-                subtitle: 'Post-Retro',
+                id: 'modern',
                 img: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=704&auto=format&fit=crop'
               },
             ].map((cat, index) => (
               <Reveal key={index} direction="up" delay={index * 200} className="relative aspect-[3/4] group overflow-hidden cursor-pointer">
                 <Image
                   src={cat.img}
-                  alt={cat.title}
+                  alt={t(`categories.${cat.id}.title`)}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity" />
                 <div className="absolute inset-x-0 bottom-0 p-8 z-20 space-y-2 text-center">
                   <span className="text-[var(--color-accent)] text-[10px] font-bold uppercase tracking-[0.4em] block translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    {cat.subtitle}
+                    {t(`categories.${cat.id}.subtitle`)}
                   </span>
-                  <h3 className="text-2xl font-serif italic text-white">{cat.title}</h3>
+                  <h3 className="text-2xl font-serif italic text-white">{t(`categories.${cat.id}.title`)}</h3>
                 </div>
               </Reveal>
             ))}
@@ -189,22 +188,22 @@ export default function LandingPage() {
           <div className="lg:w-1/2 flex items-center bg-black p-12 lg:p-24">
             <Reveal direction="left" className="space-y-8">
               <h4 className="text-[var(--color-accent)] font-bold tracking-[0.3em] uppercase text-xs">
-                Precision Engineering
+                {t('lab.subtitle')}
               </h4>
               <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-                The Heart of <br /><span className="italic">Excellence</span>
+                {t('lab.title')}
               </h2>
               <p className="text-[var(--color-text-secondary)] text-lg font-light leading-relaxed max-w-lg">
-                Every timepiece we acquire is serviced by master watchmakers who specialize in vintage horology. From microscopic gear alignment to case restoration, we ensure that the mechanical poeticism of the movement remains untainted.
+                {t('lab.description')}
               </p>
               <div className="pt-6 grid grid-cols-2 gap-8 border-t border-[var(--color-border)]">
                 <div className="space-y-1">
                   <p className="text-white font-bold text-2xl font-serif italic">100%</p>
-                  <p className="text-[var(--color-text-muted)] text-[10px] uppercase tracking-widest leading-none">Original Parts</p>
+                  <p className="text-[var(--color-text-muted)] text-[10px] uppercase tracking-widest leading-none">{t('lab.stats.parts')}</p>
                 </div>
                 <div className="space-y-1">
                   <p className="text-white font-bold text-2xl font-serif italic">30+</p>
-                  <p className="text-[var(--color-text-muted)] text-[10px] uppercase tracking-widest leading-none">Point Inspection</p>
+                  <p className="text-[var(--color-text-muted)] text-[10px] uppercase tracking-widest leading-none">{t('lab.stats.inspection')}</p>
                 </div>
               </div>
             </Reveal>

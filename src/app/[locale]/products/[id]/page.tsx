@@ -2,7 +2,8 @@
 
 import { use, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { Button, Badge, Reveal } from '@/components/ui';
 import { mockWatches } from '@/lib/mock-data';
 import { cn, formatPrice } from '@/lib/utils';
@@ -14,6 +15,8 @@ interface ProductPageProps {
 }
 
 export default function ProductDetailPage({ params }: ProductPageProps) {
+    const t = useTranslations('product');
+    const tNav = useTranslations('nav');
     const { id } = use(params);
     const watch = mockWatches.find((w) => w.id === id) || mockWatches[0];
     const [selectedImage, setSelectedImage] = useState(watch.image);
@@ -29,9 +32,9 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
             <div className="container py-8">
                 <Reveal direction="none">
                     <nav className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] font-bold">
-                        <Link href={ROUTES.home} className="hover:text-white transition-colors">Home</Link>
+                        <Link href={ROUTES.home} className="hover:text-white transition-colors">{tNav('home')}</Link>
                         <span>/</span>
-                        <Link href={ROUTES.products} className="hover:text-white transition-colors">Collection</Link>
+                        <Link href={ROUTES.products} className="hover:text-white transition-colors">{tNav('collection')}</Link>
                         <span>/</span>
                         <span className="text-white">{watch.brand}</span>
                     </nav>
@@ -54,7 +57,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                     />
                                     {watch.isNew && (
                                         <div className="absolute top-6 left-6">
-                                            <Badge variant="accent">New Arrival</Badge>
+                                            <Badge variant="accent">{t('newArrival')}</Badge>
                                         </div>
                                     )}
                                 </div>
@@ -87,7 +90,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         </span>
                                         {watch.year && (
                                             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
-                                                Circa {watch.year}
+                                                {t('circa', { year: watch.year })}
                                             </span>
                                         )}
                                     </div>
@@ -108,38 +111,38 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         )}
                                     </div>
                                     <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-widest font-bold">
-                                        Inclusive of all taxes & free worldwide shipping
+                                        {t('inclusive')}
                                     </p>
                                 </div>
 
                                 <div className="space-y-6">
                                     <div className="space-y-3">
                                         <h4 className="text-[10px] uppercase font-bold tracking-[0.2em] text-[var(--color-text-muted)]">
-                                            Condition & Heritage
+                                            {t('condition')}
                                         </h4>
                                         <div className="flex items-center gap-2">
-                                            <Badge variant="accent">{watch.condition.toUpperCase()}</Badge>
+                                            <Badge variant="accent">{t(`conditions.${watch.condition}`).toUpperCase()}</Badge>
                                             <p className="text-sm text-[var(--color-text-secondary)]">
-                                                Authenticated and inspected by our master watchmakers.
+                                                {t('authenticated')}
                                             </p>
                                         </div>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-8 border-t border-[var(--color-border)] pt-8">
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Case Material</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('caseMaterial')}</p>
                                             <p className="text-sm font-medium">Stainless Steel</p>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Movement</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('movement')}</p>
                                             <p className="text-sm font-medium">Automatic Caliber</p>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Case Size</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('caseSize')}</p>
                                             <p className="text-sm font-medium">36mm</p>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Era</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('era')}</p>
                                             <p className="text-sm font-medium">1970s Vintage</p>
                                         </div>
                                     </div>
@@ -147,15 +150,15 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
                                 <div className="pt-6 space-y-4">
                                     <Button className="w-full h-16 rounded-none text-xs font-bold uppercase tracking-[0.3em]">
-                                        Purchase Inquiry
+                                        {t('purchaseInquiry')}
                                     </Button>
                                     <Button variant="outline" className="w-full h-16 rounded-none text-xs font-bold uppercase tracking-[0.3em] border-[var(--color-border)]">
-                                        Book a Viewing
+                                        {t('bookViewing')}
                                     </Button>
                                 </div>
 
                                 <p className="text-[10px] text-center text-[var(--color-text-muted)] uppercase tracking-widest leading-relaxed">
-                                    Guaranteed Authenticity • 12-Month Warranty • Insured Delivery
+                                    {t('guaranteed')} • {t('warranty')} • {t('insured')}
                                 </p>
                             </div>
                         </Reveal>
@@ -168,7 +171,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 <div className="container space-y-12">
                     <Reveal direction="up">
                         <div className="text-center space-y-4">
-                            <h2 className="text-4xl font-serif font-bold italic">You May Also Seek</h2>
+                            <h2 className="text-4xl font-serif font-bold italic">{t('relatedTitle')}</h2>
                             <div className="h-px w-24 bg-[var(--color-accent)] mx-auto" />
                         </div>
                     </Reveal>

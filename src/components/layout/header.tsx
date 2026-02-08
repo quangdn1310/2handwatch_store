@@ -1,22 +1,25 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { SITE_CONFIG, ROUTES } from '@/constants';
 import { Button } from '@/components/ui';
 import { CartIcon, MenuIcon, CloseIcon, WatchIcon } from '@/components/icons';
-
-const navLinks = [
-    { href: ROUTES.home, label: 'Home' },
-    { href: ROUTES.products, label: 'Collection' },
-    { href: ROUTES.about, label: 'About' },
-    { href: '/brands', label: 'Brands' },
-    { href: '/faq', label: 'FAQ' },
-    { href: ROUTES.contact, label: 'Contact' },
-];
+import { LanguageSwitcher } from './language-switcher';
 
 export function Header() {
+    const t = useTranslations('nav');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const navLinks = [
+        { href: ROUTES.home, label: t('home') },
+        { href: ROUTES.products, label: t('collection') },
+        { href: ROUTES.about, label: t('about') },
+        { href: '/brands', label: t('brands') },
+        { href: '/faq', label: t('faq') },
+        { href: ROUTES.contact, label: t('contact') },
+    ];
 
     return (
         <header className="sticky top-0 z-50 w-full glass-header">
@@ -43,8 +46,9 @@ export function Header() {
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
+                                // @ts-ignore
                                 href={link.href}
-                                className="text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] hover:after:w-full after:transition-all"
+                                className="text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--color-text-secondary)] hover:text-white transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] hover:after:w-full after:transition-all"
                             >
                                 {link.label}
                             </Link>
@@ -52,16 +56,13 @@ export function Header() {
                     </nav>
 
                     {/* Right Actions */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-6">
                         {/* Language Selector */}
-                        <button className="hidden md:flex items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-white transition-colors">
-                            <span>🇺🇸</span>
-                            <span>EN</span>
-                        </button>
+                        <LanguageSwitcher />
 
                         {/* New & Trending Button */}
-                        <Button variant="outline" size="sm" className="hidden md:flex">
-                            New & Trending
+                        <Button variant="outline" size="sm" className="hidden md:flex rounded-none border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-white hover:border-white h-10 px-4 text-[10px] font-bold uppercase tracking-widest transition-all">
+                            {t('trending')}
                         </Button>
 
                         {/* Cart */}
@@ -92,6 +93,7 @@ export function Header() {
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
+                                    // @ts-ignore
                                     href={link.href}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="px-4 py-3 text-[var(--color-text-secondary)] hover:text-white hover:bg-[var(--color-bg-secondary)] rounded transition-colors"
