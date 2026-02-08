@@ -4,15 +4,16 @@ import { Topbar } from '@/components/dashboard/Topbar';
 
 interface DashboardLayoutProps {
     children: ReactNode;
-    params: {
+    params: Promise<{
         locale: string;
-    };
+    }>;
 }
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,
-    params: { locale },
+    params,
 }: DashboardLayoutProps) {
+    const { locale } = await params;
     return (
         <div className="min-h-screen bg-[#050505]">
             <Topbar locale={locale} />
