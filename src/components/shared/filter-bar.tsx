@@ -48,7 +48,7 @@ export function FilterBar({
         { value: 'name', label: t('name') },
     ];
     return (
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 relative z-40">
             <div className="flex items-center gap-2 text-sm text-[var(--color-text-muted)]">
                 <svg
                     className="w-4 h-4"

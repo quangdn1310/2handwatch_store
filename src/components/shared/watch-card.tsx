@@ -16,6 +16,17 @@ export interface WatchCardProps {
     condition: 'like-new' | 'excellent' | 'good' | 'fair';
     year?: string;
     image: string;
+    images?: string[];
+    description?: string;
+    specifications?: {
+        diameter: string;
+        thickness: string;
+        material: string;
+        movement: string;
+        waterResistance?: string;
+        crystal?: string;
+        strap?: string;
+    };
     isNew?: boolean;
     isFeatured?: boolean;
 }

@@ -1,14 +1,16 @@
-'use client';
+"use client"
 
-import { use, useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { Button, Badge, Reveal } from '@/components/ui';
-import { mockWatches } from '@/lib/mock-data';
 import { cn, formatPrice } from '@/lib/utils';
 import { Newsletter, WatchCard } from '@/components/shared';
 import { ROUTES } from '@/constants';
+import { productService, BackendWatch } from '@/services/product.service';
+import { WatchCardProps } from '@/components/shared/watch-card';
+import { BACKEND_URL } from '@/services/api';
 
 interface ProductPageProps {
     params: Promise<{ id: string }>;
@@ -18,13 +20,39 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
     const t = useTranslations('product');
     const tNav = useTranslations('nav');
     const { id } = use(params);
-    const watch = mockWatches.find((w) => w.id === id) || mockWatches[0];
-    const [selectedImage, setSelectedImage] = useState(watch.image);
 
-    // Mock images gallery
-    const gallery = [watch.image, '/images/watches/watch-2.png', '/images/watches/watch-3.png'];
+    const [watch, setWatch] = useState<WatchCardProps | null>(null);
+    const [relatedWatches, setRelatedWatches] = useState<WatchCardProps[]>([]);
+    const [selectedImage, setSelectedImage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(true);
 
-    const relatedWatches = mockWatches.filter((w) => w.id !== id).slice(0, 4);
+    useEffect(() => {
+        const fetchDetails = async () => {
+            try {
+                setIsLoading(true);
+                const data = await productService.getById(id);
+                setWatch(data);
+                setSelectedImage(data.images?.[0] || '/images/watches/watch-1.png');
+
+                // Fetch related
+                const all = await productService.getAll();
+                setRelatedWatches(all.filter(w => w.id !== id).slice(0, 4));
+            } catch (error) {
+                console.error('Failed to fetch product details:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchDetails();
+    }, [id]);
+
+    if (isLoading || !watch) {
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-accent)]"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-black text-white">
@@ -55,28 +83,25 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         className="object-cover"
                                         priority
                                     />
-                                    {watch.isNew && (
-                                        <div className="absolute top-6 left-6">
-                                            <Badge variant="accent">{t('newArrival')}</Badge>
-                                        </div>
-                                    )}
                                 </div>
-                                <div className="grid grid-cols-3 gap-4">
-                                    {gallery.map((img, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => setSelectedImage(img)}
-                                            className={cn(
-                                                'relative aspect-square overflow-hidden border transition-all duration-300',
-                                                selectedImage === img
-                                                    ? 'border-[var(--color-accent)] opacity-100'
-                                                    : 'border-[var(--color-border)] opacity-60 hover:opacity-100'
-                                            )}
-                                        >
-                                            <Image src={img} alt="Gallery" fill className="object-cover" />
-                                        </button>
-                                    ))}
-                                </div>
+                                {watch.images && watch.images.length > 1 && (
+                                    <div className="grid grid-cols-4 gap-4">
+                                        {watch.images.map((img, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => setSelectedImage(img)}
+                                                className={cn(
+                                                    'relative aspect-square overflow-hidden border transition-all duration-300',
+                                                    selectedImage === img
+                                                        ? 'border-[var(--color-accent)] opacity-100'
+                                                        : 'border-[var(--color-border)] opacity-60 hover:opacity-100'
+                                                )}
+                                            >
+                                                <Image src={img} alt="Gallery" fill className="object-cover" />
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         </Reveal>
 
@@ -88,11 +113,6 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-accent)]">
                                             {watch.brand}
                                         </span>
-                                        {watch.year && (
-                                            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
-                                                {t('circa', { year: watch.year })}
-                                            </span>
-                                        )}
                                     </div>
                                     <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
                                         {watch.name}
@@ -104,7 +124,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                                         <span className="text-3xl font-bold text-[var(--color-accent)]">
                                             {formatPrice(watch.price)}
                                         </span>
-                                        {watch.originalPrice && (
+                                        {watch.originalPrice && watch.originalPrice > watch.price && (
                                             <span className="text-lg text-[var(--color-text-muted)] line-through">
                                                 {formatPrice(watch.originalPrice)}
                                             </span>
@@ -130,31 +150,33 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
                                     <div className="grid grid-cols-2 gap-8 border-t border-[var(--color-border)] pt-8">
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('caseMaterial')}</p>
-                                            <p className="text-sm font-medium">Stainless Steel</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Diameter</p>
+                                            <p className="text-sm font-medium">{watch.specifications?.diameter || 'N/A'}</p>
                                         </div>
                                         <div className="space-y-1">
                                             <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('movement')}</p>
-                                            <p className="text-sm font-medium">Automatic Caliber</p>
+                                            <p className="text-sm font-medium">{watch.specifications?.movement || 'N/A'}</p>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('caseSize')}</p>
-                                            <p className="text-sm font-medium">36mm</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Thickness</p>
+                                            <p className="text-sm font-medium">{watch.specifications?.thickness || 'N/A'}</p>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">{t('era')}</p>
-                                            <p className="text-sm font-medium">1970s Vintage</p>
+                                            <p className="text-[10px] text-[var(--color-text-muted)] uppercase font-bold">Material</p>
+                                            <p className="text-sm font-medium">{watch.specifications?.material || 'N/A'}</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="pt-6 space-y-4">
-                                    <Button className="w-full h-16 rounded-none text-xs font-bold uppercase tracking-[0.3em]">
-                                        {t('purchaseInquiry')}
-                                    </Button>
-                                    <Button variant="outline" className="w-full h-16 rounded-none text-xs font-bold uppercase tracking-[0.3em] border-[var(--color-border)]">
-                                        {t('bookViewing')}
-                                    </Button>
+                                <div className="space-y-6 pt-6">
+                                    <div className="prose prose-invert prose-sm max-w-none text-[var(--color-text-secondary)] font-light leading-relaxed">
+                                        {watch.description || 'No description provided.'}
+                                    </div>
+                                    <div className="pt-4 space-y-4">
+                                        <Button className="w-full h-16 rounded-none text-xs font-bold uppercase tracking-[0.3em]">
+                                            {t('purchaseInquiry')}
+                                        </Button>
+                                    </div>
                                 </div>
 
                                 <p className="text-[10px] text-center text-[var(--color-text-muted)] uppercase tracking-widest leading-relaxed">

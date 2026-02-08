@@ -179,5 +179,51 @@
     "instagram": {
         "follow": "Theo dõi câu chuyện",
         "viewMore": "Xem thêm trên Instagram"
+    },
+    "dashboard": {
+        "sidebar": {
+            "overview": "Tổng quan",
+            "products": "Sản phẩm",
+            "orders": "Đơn hàng",
+            "users": "Người dùng",
+            "settings": "Cài đặt"
+        },
+        "topbar": {
+            "search": "Tìm kiếm...",
+            "notifications": "Thông báo",
+            "profile": "Hồ sơ",
+            "logout": "Đăng xuất"
+        },
+        "products": {
+            "title": "Quản lý sản phẩm",
+            "subtitle": "Xem và quản lý tất cả sản phẩm trong cửa hàng của bạn.",
+            "addProduct": "Thêm sản phẩm",
+            "editProduct": "Chỉnh sửa sản phẩm",
+            "deleteProduct": "Xóa sản phẩm",
+            "table": {
+                "name": "Tên sản phẩm",
+                "brand": "Thương hiệu",
+                "price": "Giá",
+                "condition": "Tình trạng",
+                "actions": "Thao tác"
+            },
+            "form": {
+                "name": "Tên sản phẩm",
+                "brand": "Thương hiệu",
+                "price": "Giá (VNĐ)",
+                "condition": "Tình trạng",
+                "year": "Năm",
+                "description": "Mô tả",
+                "image": "Hình ảnh",
+                "save": "Lưu thay đổi",
+                "cancel": "Hủy"
+            },
+            "delete": {
+                "title": "Xác nhận xóa",
+                "message": "Bạn có chắc chắn muốn xóa sản phẩm này? Hành động này không thể hoàn tác.",
+                "confirm": "Xóa sản phẩm",
+                "cancel": "Hủy"
+            }
+        }
     }
 }

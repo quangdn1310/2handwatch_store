@@ -2,7 +2,9 @@
  * API Service configuration for 2Hand Watch Store
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+// Base URLs for API and Static Files
+export const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+export const API_BASE_URL = `${BACKEND_URL}/api/v1`;
 
 interface RequestConfig extends RequestInit {
     params?: Record<string, string | number | boolean>;
@@ -15,7 +17,10 @@ async function request<T>(endpoint: string, config: RequestConfig = {}): Promise
     const { params, ...init } = config;
 
     // Build URL with query params
-    const url = new URL(endpoint, API_BASE_URL);
+    const baseUrl = API_BASE_URL.endsWith('/') ? API_BASE_URL : `${API_BASE_URL}/`;
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+    const url = new URL(cleanEndpoint, baseUrl);
+
     if (params) {
         Object.entries(params).forEach(([key, value]) => {
             url.searchParams.append(key, String(value));
@@ -26,6 +31,7 @@ async function request<T>(endpoint: string, config: RequestConfig = {}): Promise
         ...init,
         headers: {
             'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true', // Bypass ngrok interstitial page
             ...init.headers,
         },
     });

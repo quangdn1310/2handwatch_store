@@ -9,11 +9,26 @@ const nextConfig: NextConfig = {
 
   // Image optimization configuration
   images: {
+    unoptimized: true,
     // Add remote patterns for external images
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8000',
+      },
+      {
+        protocol: 'https',
+        hostname: '**', // Allow all hostnames for public tunnel previews
       },
     ],
     // Optimize images

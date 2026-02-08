@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button, Reveal } from '@/components/ui';
 import { ROUTES } from '@/constants';
@@ -12,11 +13,29 @@ import {
   Testimonials,
   WatchCard
 } from '@/components/shared';
-import { mockWatches } from '@/lib/mock-data';
+import { productService } from '@/services/product.service';
+import { WatchCardProps } from '@/components/shared/watch-card';
 
 export default function LandingPage() {
   const t = useTranslations();
-  const featuredWatches = mockWatches.filter(w => w.isFeatured).slice(0, 4);
+  const [featuredWatches, setFeaturedWatches] = useState<WatchCardProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFeatured = async () => {
+      try {
+        setIsLoading(true);
+        // We'll just take the first 4 for now, or filter if we add isFeatured to API
+        const data = await productService.getAll();
+        setFeaturedWatches(data.slice(0, 4));
+      } catch (error) {
+        console.error('Failed to fetch featured watches:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchFeatured();
+  }, []);
 
   return (
     <div className="min-h-screen bg-black">
@@ -127,7 +146,11 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredWatches.map((watch, index) => (
+            {isLoading ? (
+              Array(4).fill(0).map((_, i) => (
+                <div key={i} className="aspect-[3/4] bg-white/5 animate-pulse rounded-2xl" />
+              ))
+            ) : featuredWatches.map((watch, index) => (
               <Reveal key={watch.id} direction="up" delay={index * 150}>
                 <WatchCard {...watch} />
               </Reveal>

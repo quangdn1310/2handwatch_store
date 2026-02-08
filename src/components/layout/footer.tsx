@@ -34,7 +34,7 @@ export function Footer() {
 
     return (
         <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
-            <div className="container py-16">
+            <div className="container !py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
                     {/* Brand Column */}
                     <div className="lg:col-span-2 space-y-6">

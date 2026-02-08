@@ -179,5 +179,51 @@
     "instagram": {
         "follow": "Follow the story",
         "viewMore": "View more on Instagram"
+    },
+    "dashboard": {
+        "sidebar": {
+            "overview": "Overview",
+            "products": "Products",
+            "orders": "Orders",
+            "users": "Users",
+            "settings": "Settings"
+        },
+        "topbar": {
+            "search": "Search...",
+            "notifications": "Notifications",
+            "profile": "Profile",
+            "logout": "Logout"
+        },
+        "products": {
+            "title": "Product Management",
+            "subtitle": "View and manage all products in your store.",
+            "addProduct": "Add Product",
+            "editProduct": "Edit Product",
+            "deleteProduct": "Delete Product",
+            "table": {
+                "name": "Product Name",
+                "brand": "Brand",
+                "price": "Price",
+                "condition": "Condition",
+                "actions": "Actions"
+            },
+            "form": {
+                "name": "Product Name",
+                "brand": "Brand",
+                "price": "Price (VND)",
+                "condition": "Condition",
+                "year": "Year",
+                "description": "Description",
+                "image": "Image",
+                "save": "Save Changes",
+                "cancel": "Cancel"
+            },
+            "delete": {
+                "title": "Confirm Delete",
+                "message": "Are you sure you want to delete this product? This action cannot be undone.",
+                "confirm": "Delete Product",
+                "cancel": "Cancel"
+            }
+        }
     }
 }
