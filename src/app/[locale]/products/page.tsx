@@ -19,16 +19,17 @@ export default function ProductsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState<WatchCardProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const totalPages = 1; // Simplified for now since we don't have pagination on backend yet
-  const totalProducts = products.length;
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setIsLoading(true);
-        const data = await productService.getAll();
-        setProducts(data);
+        const response = await productService.getAll(currentPage, 12);
+        setProducts(response.items);
+        setTotalPages(response.totalPages);
+        setTotalProducts(response.total);
       } catch (error) {
         console.error('Failed to fetch products:', error);
       } finally {
@@ -36,7 +37,7 @@ export default function ProductsPage() {
       }
     };
     fetchProducts();
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className="min-h-screen bg-black">
@@ -80,8 +81,8 @@ export default function ProductsPage() {
             <div className="flex items-center justify-between text-[10px] text-[var(--color-text-muted)] uppercase tracking-[0.2em] font-bold">
               <p>
                 {t.rich('showing', {
-                  start: 1,
-                  end: 12,
+                  start: (currentPage - 1) * 12 + 1,
+                  end: Math.min(currentPage * 12, totalProducts),
                   total: totalProducts,
                   span: (chunks) => <span className="text-white">{chunks}</span>
                 })}

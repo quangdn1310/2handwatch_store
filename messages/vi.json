@@ -222,7 +222,12 @@
                 "description": "Mô tả",
                 "image": "Hình ảnh",
                 "save": "Lưu thay đổi",
-                "cancel": "Hủy"
+                "cancel": "Hủy",
+                "statuses": {
+                    "available": "Sẵn có",
+                    "preorder": "Đặt trước",
+                    "sold": "Đã bán"
+                }
             },
             "delete": {
                 "title": "Xác nhận xóa",

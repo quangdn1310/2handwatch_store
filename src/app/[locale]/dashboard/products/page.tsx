@@ -7,6 +7,7 @@ import { ProductForm } from '@/components/dashboard/ProductForm';
 import { Button, Reveal } from '@/components/ui';
 import { PlusIcon } from '@/components/icons';
 import { WatchCardProps } from '@/components/shared/watch-card';
+import { Pagination } from '@/components/shared';
 import { productService, WatchCreateInput } from '@/services/product.service';
 
 export default function ProductsManagementPage() {
@@ -16,12 +17,18 @@ export default function ProductsManagementPage() {
     const [error, setError] = useState<string | null>(null);
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState<WatchCardProps | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalProducts, setTotalProducts] = useState(0);
+    const itemsPerPage = 10;
 
     const fetchProducts = async () => {
         try {
             setIsLoading(true);
-            const data = await productService.getAll();
-            setProducts(data);
+            const response = await productService.getAll(currentPage, itemsPerPage);
+            setProducts(response.items);
+            setTotalPages(response.totalPages);
+            setTotalProducts(response.total);
             setError(null);
         } catch (err) {
             console.error('Failed to fetch products:', err);
@@ -33,7 +40,7 @@ export default function ProductsManagementPage() {
 
     useEffect(() => {
         fetchProducts();
-    }, []);
+    }, [currentPage]);
 
     const handleAddProduct = () => {
         setEditingProduct(null);
@@ -139,13 +146,27 @@ export default function ProductsManagementPage() {
                     </div>
                 </Reveal>
             ) : (
-                <Reveal direction="up" delay={200}>
-                    <ProductTable
-                        products={products}
-                        onEdit={handleEditProduct}
-                        onDelete={handleDeleteProduct}
-                    />
-                </Reveal>
+                <div className="space-y-8">
+                    <Reveal direction="up" delay={200}>
+                        <ProductTable
+                            products={products}
+                            onEdit={handleEditProduct}
+                            onDelete={handleDeleteProduct}
+                        />
+                    </Reveal>
+
+                    {totalPages > 1 && (
+                        <Reveal direction="up" delay={300}>
+                            <div className="pt-4 border-t border-white/5">
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    onPageChange={setCurrentPage}
+                                />
+                            </div>
+                        </Reveal>
+                    )}
+                </div>
             )}
         </div>
     );

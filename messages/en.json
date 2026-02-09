@@ -222,7 +222,12 @@
                 "description": "Description",
                 "image": "Image",
                 "save": "Save Changes",
-                "cancel": "Cancel"
+                "cancel": "Cancel",
+                "statuses": {
+                    "available": "Available",
+                    "preorder": "Preorder",
+                    "sold": "Sold"
+                }
             },
             "delete": {
                 "title": "Confirm Delete",

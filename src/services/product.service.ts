@@ -45,6 +45,28 @@ export interface WatchCreateInput {
     };
 }
 
+export interface BackendWatchPagination {
+    items: BackendWatch[];
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+}
+
+export interface PaginatedWatchResponse {
+    items: WatchCardProps[];
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+}
+
+export interface SiteStats {
+    totalVisits: number;
+    totalProducts: number;
+    totalViews: number;
+}
+
 // Mapper from Backend to Frontend
 export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
     const processedImages = watch.images.map((url: string) => {
@@ -71,6 +93,7 @@ export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
         images: processedImages,
         description: watch.description,
         specifications: watch.specifications,
+        views: (watch as any).views || 0,
         year: '', // Backend doesn't have year, we might need to add it later
         isNew: false, // Map based on some logic if needed
         isFeatured: false,
@@ -78,9 +101,17 @@ export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
 };
 
 export const productService = {
-    getAll: async (): Promise<WatchCardProps[]> => {
-        const watches = await api.get<BackendWatch[]>('products/');
-        return watches.map(mapBackendToFrontend);
+    getAll: async (page: number = 1, limit: number = 100): Promise<PaginatedWatchResponse> => {
+        const skip = (page - 1) * limit;
+        const response = await api.get<BackendWatchPagination>(`products/?skip=${skip}&limit=${limit}`);
+
+        return {
+            items: response.items.map(mapBackendToFrontend),
+            total: response.total,
+            page: response.page,
+            limit: response.limit,
+            totalPages: response.totalPages
+        };
     },
 
     getById: async (id: string): Promise<WatchCardProps> => {
@@ -100,5 +131,21 @@ export const productService = {
 
     delete: async (id: string): Promise<void> => {
         await api.delete(`products/${id}`);
+    },
+
+    incrementView: async (id: string): Promise<void> => {
+        await api.post(`products/${id}/view`, {});
+    },
+
+    incrementSiteVisit: async (): Promise<void> => {
+        const sessionKey = 'site-visit-tracked';
+        if (typeof window !== 'undefined' && !sessionStorage.getItem(sessionKey)) {
+            await api.post('analytics/visit', {});
+            sessionStorage.setItem(sessionKey, 'true');
+        }
+    },
+
+    getStats: async (): Promise<SiteStats> => {
+        return await api.get<SiteStats>('analytics/stats');
     },
 };

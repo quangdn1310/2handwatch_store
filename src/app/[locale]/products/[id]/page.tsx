@@ -34,9 +34,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 setWatch(data);
                 setSelectedImage(data.images?.[0] || '/images/watches/watch-1.png');
 
+                // Increment view count
+                productService.incrementView(id).catch(console.error);
+
                 // Fetch related
-                const all = await productService.getAll();
-                setRelatedWatches(all.filter(w => w.id !== id).slice(0, 4));
+                const response = await productService.getAll(1, 10);
+                setRelatedWatches(response.items.filter(w => w.id !== id).slice(0, 4));
             } catch (error) {
                 console.error('Failed to fetch product details:', error);
             } finally {

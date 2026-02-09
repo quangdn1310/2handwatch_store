@@ -30,6 +30,7 @@ export interface WatchCardProps {
     };
     isNew?: boolean;
     isFeatured?: boolean;
+    views?: number;
 }
 
 const conditionVariants = {

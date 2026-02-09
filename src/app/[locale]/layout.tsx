@@ -5,6 +5,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header, Footer } from '@/components/layout';
+import { AnalyticsTracker } from '@/components/shared/analytics-tracker';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -57,6 +58,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className="antialiased font-sans">
         <NextIntlClientProvider messages={messages}>
+          <AnalyticsTracker />
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">{children}</main>
