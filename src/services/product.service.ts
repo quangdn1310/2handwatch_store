@@ -100,10 +100,47 @@ export const mapBackendToFrontend = (watch: BackendWatch): WatchCardProps => {
     };
 };
 
+export interface ProductFilterOptions {
+    page?: number;
+    limit?: number;
+    q?: string;
+    brand?: string;
+    condition?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    sortBy?: string;
+    sortOrder?: 'asc' | 'desc';
+}
+
 export const productService = {
-    getAll: async (page: number = 1, limit: number = 100): Promise<PaginatedWatchResponse> => {
+    getAll: async (options: ProductFilterOptions = {}): Promise<PaginatedWatchResponse> => {
+        const {
+            page = 1,
+            limit = 100,
+            q,
+            brand,
+            condition,
+            minPrice,
+            maxPrice,
+            sortBy,
+            sortOrder
+        } = options;
+
         const skip = (page - 1) * limit;
-        const response = await api.get<BackendWatchPagination>(`products/?skip=${skip}&limit=${limit}`);
+        const params: Record<string, string | number | boolean> = {
+            skip,
+            limit
+        };
+
+        if (q) params.q = q;
+        if (brand) params.brand = brand;
+        if (condition) params.condition = condition;
+        if (minPrice !== undefined) params.min_price = minPrice;
+        if (maxPrice !== undefined) params.max_price = maxPrice;
+        if (sortBy) params.sort_by = sortBy;
+        if (sortOrder) params.sort_order = sortOrder;
+
+        const response = await api.get<BackendWatchPagination>('products/', params);
 
         return {
             items: response.items.map(mapBackendToFrontend),

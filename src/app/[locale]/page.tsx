@@ -26,7 +26,7 @@ export default function LandingPage() {
       try {
         setIsLoading(true);
         // We'll just take the first 4 for now, or filter if we add isFeatured to API
-        const response = await productService.getAll(1, 4);
+        const response = await productService.getAll({ page: 1, limit: 4 });
         setFeaturedWatches(response.items);
       } catch (error) {
         console.error('Failed to fetch featured watches:', error);

@@ -38,7 +38,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 productService.incrementView(id).catch(console.error);
 
                 // Fetch related
-                const response = await productService.getAll(1, 10);
+                const response = await productService.getAll({ page: 1, limit: 10 });
                 setRelatedWatches(response.items.filter(w => w.id !== id).slice(0, 4));
             } catch (error) {
                 console.error('Failed to fetch product details:', error);

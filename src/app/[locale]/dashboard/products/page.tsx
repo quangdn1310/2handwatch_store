@@ -25,7 +25,10 @@ export default function ProductsManagementPage() {
     const fetchProducts = async () => {
         try {
             setIsLoading(true);
-            const response = await productService.getAll(currentPage, itemsPerPage);
+            const response = await productService.getAll({
+                page: currentPage,
+                limit: itemsPerPage
+            });
             setProducts(response.items);
             setTotalPages(response.totalPages);
             setTotalProducts(response.total);
