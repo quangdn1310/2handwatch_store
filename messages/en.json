@@ -10,7 +10,7 @@
     "nav": {
         "home": "Home",
         "collection": "Collection",
-        "about": "About",
+        "auction": "Auction",
         "brands": "Brands",
         "faq": "FAQ",
         "contact": "Contact",
@@ -31,6 +31,42 @@
             "title": "Looking for Your Favorite Brand?",
             "description": "Discover our vintage watch collection from the world's finest brands",
             "button": "View Collection"
+        }
+    },
+    "auction": {
+        "title": "Exclusive Auction",
+        "subtitle": "Opportunity to Own a Masterpiece",
+        "endsIn": "Ends in",
+        "currentBid": "Current Highest Bid",
+        "startingPrice": "Starting Price",
+        "bidNow": "Bid Now",
+        "bidHistory": "Bid History",
+        "noBids": "No bids yet. Be the first!",
+        "placeBid": "Place Your Bid",
+        "inputPlaceholder": "Enter price - Phone number (Ex: 1,500,000,000 - 0912345678)",
+        "submit": "Submit Bid",
+        "specs": {
+            "title": "Specifications",
+            "brand": "Brand",
+            "model": "Model",
+            "diameter": "Diameter",
+            "movement": "Movement",
+            "material": "Material",
+            "year": "Year",
+            "condition": "Condition",
+            "boxPapers": "Box & Papers"
+        },
+        "errors": {
+            "invalidFormat": "Please use format: Price - Phone Number",
+            "lowBid": "Bid must be higher than current bid",
+            "lowStartingBid": "Bid must be higher than starting price"
+        },
+        "success": "Bid submitted successfully!",
+        "rules": {
+            "title": "Auction Rules",
+            "rule1": "Minimum bid increment: 10,000 VND",
+            "rule2": "Winner will be contacted within 24h",
+            "rule3": "Price excludes shipping and insurance"
         }
     },
     "hero": {
@@ -231,6 +267,7 @@
         "sidebar": {
             "overview": "Overview",
             "products": "Products",
+            "auctions": "Auctions",
             "orders": "Orders",
             "users": "Users",
             "settings": "Settings"

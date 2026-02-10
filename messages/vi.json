@@ -10,7 +10,7 @@
     "nav": {
         "home": "Trang chủ",
         "collection": "Bộ sưu tập",
-        "about": "Giới thiệu",
+        "auction": "Đấu giá",
         "brands": "Thương hiệu",
         "faq": "Hỏi đáp",
         "contact": "Liên hệ",
@@ -31,6 +31,42 @@
             "title": "Tìm kiếm thương hiệu yêu thích?",
             "description": "Khám phá bộ sưu tập đồng hồ vintage từ các thương hiệu hàng đầu thế giới",
             "button": "Xem bộ sưu tập"
+        }
+    },
+    "auction": {
+        "title": "Đấu Giá Độc Quyền",
+        "subtitle": "Cơ Hội Sở Hữu Kiệt Tác",
+        "endsIn": "Kết thúc trong",
+        "currentBid": "Giá cao nhất hiện tại",
+        "startingPrice": "Giá khởi điểm",
+        "bidNow": "Đặt giá ngay",
+        "bidHistory": "Lịch sử đấu giá",
+        "noBids": "Chưa có lượt đặt giá nào. Hãy là người đầu tiên!",
+        "placeBid": "Đặt giá của bạn",
+        "inputPlaceholder": "Nhập giá - Số điện thoại (Ví dụ: 1.500.000.000 - 0912345678)",
+        "submit": "Xác nhận đặt giá",
+        "specs": {
+            "title": "Thông số kỹ thuật",
+            "brand": "Thương hiệu",
+            "model": "Model",
+            "diameter": "Đường kính",
+            "movement": "Bộ máy",
+            "material": "Chất liệu",
+            "year": "Năm sản xuất",
+            "condition": "Tình trạng",
+            "boxPapers": "Phụ kiện"
+        },
+        "errors": {
+            "invalidFormat": "Vui lòng nhập đúng định dạng: Giá - Số điện thoại",
+            "lowBid": "Giá đặt phải cao hơn giá hiện tại",
+            "lowStartingBid": "Giá đặt phải cao hơn giá khởi điểm"
+        },
+        "success": "Đặt giá thành công!",
+        "rules": {
+            "title": "Quy định đấu giá",
+            "rule1": "Bước giá tối thiểu: 10.000 VNĐ",
+            "rule2": "Người chiến thắng sẽ được liên hệ trong vòng 24h",
+            "rule3": "Giá chưa bao gồm phí vận chuyển và bảo hiểm"
         }
     },
     "hero": {
@@ -231,6 +267,7 @@
         "sidebar": {
             "overview": "Tổng quan",
             "products": "Sản phẩm",
+            "auctions": "Đấu giá",
             "orders": "Đơn hàng",
             "users": "Người dùng",
             "settings": "Cài đặt"

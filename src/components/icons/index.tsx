@@ -1,8 +1,16 @@
 import { cn } from '@/lib/utils';
+import {
+    Watch as WatchIcon,
+    Gavel as GavelIcon,
+    LayoutDashboard as DashboardIcon,
+    // Add other lucide icons here if needed
+} from 'lucide-react';
 
 interface IconProps {
     className?: string;
 }
+
+export { WatchIcon, GavelIcon, DashboardIcon };
 
 export function SearchIcon({ className }: IconProps) {
     return (
@@ -76,24 +84,6 @@ export function CloseIcon({ className }: IconProps) {
     );
 }
 
-export function WatchIcon({ className }: IconProps) {
-    return (
-        <svg
-            className={cn('w-6 h-6', className)}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-        </svg>
-    );
-}
-
 export function InstagramIcon({ className }: IconProps) {
     return (
         <svg className={cn('w-5 h-5', className)} fill="currentColor" viewBox="0 0 24 24">
@@ -114,23 +104,6 @@ export function TwitterIcon({ className }: IconProps) {
     return (
         <svg className={cn('w-5 h-5', className)} fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-    );
-}
-export function DashboardIcon({ className }: IconProps) {
-    return (
-        <svg
-            className={cn('w-5 h-5', className)}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            />
         </svg>
     );
 }

@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import {
     DashboardIcon,
+    GavelIcon,
     WatchIcon,
     // Add more icons as needed
 } from '@/components/icons';
@@ -28,6 +29,11 @@ export function Sidebar({ locale }: SidebarProps) {
             name: t('products'),
             href: '/dashboard/products',
             icon: WatchIcon,
+        },
+        {
+            name: t('auctions'),
+            href: '/dashboard/auctions',
+            icon: GavelIcon,
         },
     ];
 

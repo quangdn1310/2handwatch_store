@@ -15,7 +15,7 @@ export function Header() {
     const navLinks = [
         { href: ROUTES.home, label: t('home') },
         { href: ROUTES.products, label: t('collection') },
-        { href: ROUTES.about, label: t('about') },
+        { href: ROUTES.auction, label: t('auction') },
         { href: '/brands', label: t('brands') },
         { href: '/faq', label: t('faq') },
         { href: ROUTES.contact, label: t('contact') },

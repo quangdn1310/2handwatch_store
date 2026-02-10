@@ -4,7 +4,7 @@ import { use, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Button, Badge, Reveal, ZoomImage } from '@/components/ui';
+import { Button, Badge, Reveal, ZoomImage, Carousel } from '@/components/ui';
 import { cn, formatPrice } from '@/lib/utils';
 import { Newsletter, WatchCard } from '@/components/shared';
 import { ROUTES } from '@/constants';
@@ -204,13 +204,19 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                             <div className="h-px w-24 bg-[var(--color-accent)] mx-auto" />
                         </div>
                     </Reveal>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {relatedWatches.map((w, index) => (
-                            <Reveal key={w.id} direction="up" delay={index * 100}>
-                                <WatchCard {...w} />
-                            </Reveal>
+                    <Carousel
+                        autoplay
+                        autoplayInterval={5000}
+                        itemsPerView={{ mobile: 1, tablet: 2, desktop: 4 }}
+                        gap={24}
+                        showDots
+                        showArrows
+                        className="px-4 lg:px-8"
+                    >
+                        {relatedWatches.map((w) => (
+                            <WatchCard key={w.id} {...w} />
                         ))}
-                    </div>
+                    </Carousel>
                 </div>
             </section>
 
