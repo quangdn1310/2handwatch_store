@@ -16,6 +16,23 @@
         "contact": "Contact",
         "trending": "New & Trending"
     },
+    "brands": {
+        "title": "Brands",
+        "subtitle": "Categorized by Excellence",
+        "description": "Explore watch brands categorized by their level of luxury and craftsmanship",
+        "tiers": {
+            "ultraLuxury": "Ultra Luxury Watches",
+            "highEndLuxury": "High-End Luxury Watches",
+            "luxury": "Luxury Watches",
+            "entryLuxury": "Entry Luxury Watches",
+            "watches": "Watches"
+        },
+        "cta": {
+            "title": "Looking for Your Favorite Brand?",
+            "description": "Discover our vintage watch collection from the world's finest brands",
+            "button": "View Collection"
+        }
+    },
     "hero": {
         "subtitle": "Est. 2024 • Timeless Excellence",
         "title": "The Art of",

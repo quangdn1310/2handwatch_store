@@ -13,3 +13,4 @@ export { InstagramFeed } from './instagram-feed';
 export { Pagination } from './pagination';
 export { StorePolicies } from './store-policies';
 export { Testimonials } from './testimonials';
+export { BrandTierSection } from './brand-tier-section';

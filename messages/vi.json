@@ -16,6 +16,23 @@
         "contact": "Liên hệ",
         "trending": "Mới & Xu hướng"
     },
+    "brands": {
+        "title": "Thương hiệu",
+        "subtitle": "Phân loại theo cấp độ",
+        "description": "Khám phá các thương hiệu đồng hồ được phân loại theo mức độ sang trọng và chất lượng",
+        "tiers": {
+            "ultraLuxury": "Siêu sang trọng",
+            "highEndLuxury": "Cao cấp",
+            "luxury": "Sang trọng",
+            "entryLuxury": "Nhập môn cao cấp",
+            "watches": "Đồng hồ"
+        },
+        "cta": {
+            "title": "Tìm kiếm thương hiệu yêu thích?",
+            "description": "Khám phá bộ sưu tập đồng hồ vintage từ các thương hiệu hàng đầu thế giới",
+            "button": "Xem bộ sưu tập"
+        }
+    },
     "hero": {
         "subtitle": "Est. 2024 • Tinh hoa vượt thời gian",
         "title": "Sưu tầm giá trị",

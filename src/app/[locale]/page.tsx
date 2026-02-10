@@ -4,7 +4,7 @@ import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Button, Reveal } from '@/components/ui';
+import { Button, Reveal, Carousel } from '@/components/ui';
 import { ROUTES } from '@/constants';
 import {
   Newsletter,
@@ -251,17 +251,27 @@ export default function LandingPage() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {isLoading ? (
-              Array(4).fill(0).map((_, i) => (
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {Array(4).fill(0).map((_, i) => (
                 <div key={i} className="aspect-[3/4] bg-white/5 animate-pulse rounded-2xl" />
-              ))
-            ) : featuredWatches.map((watch, index) => (
-              <Reveal key={watch.id} direction="up" delay={index * 150}>
-                <WatchCard {...watch} />
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <Carousel
+              autoplay
+              autoplayInterval={5000}
+              itemsPerView={{ mobile: 1, tablet: 2, desktop: 4 }}
+              gap={32}
+              showDots
+              showArrows
+              className="px-4 lg:px-16"
+            >
+              {featuredWatches.map((watch) => (
+                <WatchCard key={watch.id} {...watch} />
+              ))}
+            </Carousel>
+          )}
         </div>
       </section>
 

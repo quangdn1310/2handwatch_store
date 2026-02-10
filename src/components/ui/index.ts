@@ -18,3 +18,4 @@ export type { BadgeProps } from './badge';
 export { Reveal } from './reveal';
 export { ZoomImage } from './zoom-image';
 
+export { Carousel } from './carousel';
