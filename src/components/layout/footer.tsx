@@ -33,19 +33,19 @@ export function Footer() {
     };
 
     return (
-        <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
+        <footer className="bg-black border-t border-white/10">
             <div className="container !py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
                     {/* Brand Column */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* Logo */}
-                        <Link href={ROUTES.home} className="flex items-center gap-3">
-                            <WatchIcon className="w-8 h-8 text-[var(--color-accent)]" />
+                        <Link href={ROUTES.home} className="flex items-center gap-3 group">
+                            <WatchIcon className="w-8 h-8 text-accent drop-shadow-[0_0_8px_rgba(212,175,55,0.3)] transition-transform group-hover:rotate-12 duration-500" />
                             <div className="flex flex-col">
-                                <span className="text-sm font-light tracking-widest text-[var(--color-text-muted)] uppercase">
+                                <span className="text-[10px] font-bold tracking-[0.4em] text-text-muted uppercase leading-none">
                                     Tiemdocu
                                 </span>
-                                <span className="text-lg font-serif font-semibold text-[var(--color-accent)] -mt-1">
+                                <span className="text-xl font-serif font-bold text-white group-hover:text-accent transition-colors">
                                     .Unisex
                                 </span>
                             </div>

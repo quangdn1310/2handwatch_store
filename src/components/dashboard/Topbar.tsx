@@ -16,8 +16,8 @@ export function Topbar({ locale }: TopbarProps) {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
                         <Link href="/" className="ms-2 flex md:me-24">
-                            <span className="self-center whitespace-nowrap font-serif text-xl font-bold italic text-gold-gradient">
-                                2HAND WATCH
+                            <span className="uppercase self-center whitespace-nowrap font-serif text-xl font-bold text-gold-gradient">
+                                tiemdocu.unisex
                             </span>
                         </Link>
                     </div>

@@ -26,7 +26,30 @@
         "subtitle": "Gìn giữ di sản",
         "title": "Hơn cả việc xem giờ",
         "description": "Chúng tôi không chỉ bán đồng hồ; chúng tôi gìn giữ lịch sử. Mỗi kiệt tác trong bộ sưu tập đều được tuyển chọn thủ công vì tính nguyên bản cơ khí, ý nghĩa lịch sử và linh hồn riêng. Những bậc thầy đồng hồ của chúng tôi đảm bảo mỗi nhịp đập luôn chính xác như ngày nó rời xưởng sản xuất.",
-        "cta": "Quy trình tuyển chọn nội bộ"
+        "cta": "Quy trình tuyển chọn nội bộ",
+        "story": "Một chiếc đồng hồ không chỉ là một công cụ; nó là một câu chuyện.",
+        "legacy": "Hơn cả việc <span>Xem giờ</span>, tiến tới <span>Di sản</span>",
+        "curation": {
+            "title": "Tuyển chọn",
+            "description": "Được lựa chọn tỉ mỉ về tình trạng, độ hiếm và tầm quan trọng lịch sử."
+        },
+        "restoration": {
+            "title": "Phục chế",
+            "description": "Được bảo dưỡng bởi các bậc thợ đồng hồ bậc thầy sử dụng các linh kiện đúng thời đại."
+        }
+    },
+    "expertise": {
+        "subtitle": "Kinh nghiệm",
+        "title": "Đam mê dẫn lối và được dẫn dắt bởi chuyên môn",
+        "stats": {
+            "sold": "Đồng hồ đã bán",
+            "volume": "Giá trị giao dịch",
+            "brands": "Thương hiệu tuyển chọn",
+            "years": "Năm kinh nghiệm",
+            "authenticity": "Đảm bảo nguyên bản",
+            "watchmakers": "Thợ đồng hồ",
+            "inspection": "Điểm kiểm định"
+        }
     },
     "arrivals": {
         "subtitle": "Sản phẩm mới hàng tuần",
@@ -35,7 +58,8 @@
     "categories": {
         "classic": {
             "title": "Cổ điển thanh lịch",
-            "subtitle": "Đồng hồ Dress"
+            "subtitle": "Đồng hồ Dress",
+            "description": "Tinh hoa vượt thời gian qua nhiều thế hệ. Khám phá tuyển chọn các biểu tượng vintage của chúng tôi."
         },
         "rare": {
             "title": "Những phát hiện hiếm có",
@@ -144,6 +168,7 @@
         "new": "Mới",
         "featured": "Nổi bật",
         "details": "Xem chi tiết",
+        "viewLot": "Xem chi tiết sản phẩm",
         "currentPrice": "Giá hiện tại",
         "inclusive": "Đã bao gồm thuế & miễn phí vận chuyển toàn cầu",
         "conditions": {

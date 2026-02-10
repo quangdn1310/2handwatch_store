@@ -8,16 +8,16 @@ export function Testimonials() {
     const reviews = t.raw('reviews') as Array<{ name: string; location: string; text: string }>;
 
     return (
-        <section className="py-24 bg-[var(--color-bg-secondary)]/30 overflow-hidden">
+        <section className="py-28 bg-black overflow-hidden border-t border-white/5">
             <div className="container space-y-16">
                 <Reveal direction="up">
                     <div className="text-center space-y-4">
                         <h4 className="text-[var(--color-accent)] font-bold tracking-[0.4em] uppercase text-xs">
                             {t('subtitle')}
                         </h4>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
+                        <h2 className="text-5xl md:text-6xl font-serif font-bold text-white italic">
                             {t.rich('title', {
-                                span: (chunks) => <span className="text-gold-gradient italic">{chunks}</span>
+                                span: (chunks) => <span className="text-accent not-italic">{chunks}</span>
                             })}
                         </h2>
                     </div>

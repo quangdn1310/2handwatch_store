@@ -26,7 +26,30 @@
         "subtitle": "Heritage Stewardship",
         "title": "Beyond Just Keeping Time",
         "description": "We don't just sell watches; we preserve history. Each piece in our collection is hand-selected for its mechanical integrity, historical significance, and soul. Our master watchmakers ensure that every tick remains as precise as the day it left the manufacture.",
-        "cta": "Internal Selection Process"
+        "cta": "Internal Selection Process",
+        "story": "A watch is more than a tool; it's a story.",
+        "legacy": "Beyond <span>Timekeeping</span>, into <span>Legacy</span>",
+        "curation": {
+            "title": "Curation",
+            "description": "Meticulously selected for condition, rarity, and historical importance."
+        },
+        "restoration": {
+            "title": "Restoration",
+            "description": "Service by master horologists using period-correct components."
+        }
+    },
+    "expertise": {
+        "subtitle": "Expertise",
+        "title": "Driven by passion and guided by expertise",
+        "stats": {
+            "sold": "Watches Sold",
+            "volume": "Volume Traded",
+            "brands": "Brands Curated",
+            "years": "Years Experience",
+            "authenticity": "Authenticity Guaranteed",
+            "watchmakers": "Watchmakers",
+            "inspection": "Inspection Points"
+        }
     },
     "arrivals": {
         "subtitle": "New Weekly Drop",
@@ -35,7 +58,8 @@
     "categories": {
         "classic": {
             "title": "Classic Elegance",
-            "subtitle": "Dress Watches"
+            "subtitle": "Dress Watches",
+            "description": "Timeless elegance passed through generations. Discover our selection of vintage icons."
         },
         "rare": {
             "title": "Rare Discoveries",
@@ -144,6 +168,7 @@
         "new": "New",
         "featured": "Featured",
         "details": "View Details",
+        "viewLot": "View Lot Details",
         "currentPrice": "Current Price",
         "inclusive": "Inclusive of all taxes & free worldwide shipping",
         "conditions": {
@@ -159,7 +184,7 @@
         }
     },
     "collection": {
-        "title": "vintage",
+        "title": "Vintage",
         "accent": "Collection",
         "description": "Discover our selection of exceptional vintage watches.",
         "searchPlaceholder": "Search by brand, model, era...",

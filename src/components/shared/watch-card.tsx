@@ -57,9 +57,9 @@ export function WatchCard({
     const variant = conditionVariants[condition];
 
     return (
-        <div className="card group">
+        <div className="card group bg-black/40 backdrop-blur-sm border-white/5 hover:border-accent/40 transition-all duration-500">
             {/* Image Container */}
-            <div className="relative aspect-square overflow-hidden bg-[#1f1f1f]">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#0a0a0a]">
                 <Image
                     src={image}
                     alt={name}
@@ -91,8 +91,8 @@ export function WatchCard({
             <div className="p-5 space-y-4">
                 {/* Brand & Year */}
                 <div className="flex items-center justify-between">
-                    <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-[0.2em] font-semibold">
-                        {brand} {year && `• ${year}`}
+                    <p className="font-mono text-[10px] text-[var(--color-accent)] uppercase tracking-[0.2em] font-medium">
+                        {brand} {year && <span className="text-white/20 px-1">•</span>} {year}
                     </p>
                     <button className="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
                         <svg
@@ -112,12 +112,12 @@ export function WatchCard({
                 </div>
 
                 {/* Name */}
-                <h3 className="font-serif text-base font-medium text-white line-clamp-2 min-h-[2.5rem] group-hover:text-[var(--color-accent)] transition-colors tracking-tight leading-snug">
+                <h3 className="font-serif text-xl font-bold text-white line-clamp-2 h-[3rem] group-hover:text-[var(--color-accent)] transition-colors leading-[1.2] overflow-hidden">
                     {name}
                 </h3>
 
                 {/* Price Section */}
-                <div className="pt-1">
+                <div className="pt-2">
                     <div className="flex items-baseline gap-2">
                         <span className="text-xl font-bold text-[var(--color-accent)]">
                             {formatPrice(price)}
@@ -135,7 +135,7 @@ export function WatchCard({
 
                 {/* Action Button */}
                 <Link href={`/products/${id}`} className="block pt-2">
-                    <Button variant="primary" className="w-full rounded-none font-bold uppercase tracking-widest text-[10px] py-4 h-auto">
+                    <Button variant="outline" className="w-full rounded-none font-bold uppercase tracking-[0.2em] text-[10px] py-6 h-auto border-white/10 group-hover:border-accent group-hover:text-accent transition-all duration-300">
                         {t('details')}
                     </Button>
                 </Link>
