@@ -236,5 +236,14 @@
                 "cancel": "Cancel"
             }
         }
+    },
+    "auth": {
+        "login": "Login",
+        "adminOnly": "System Administrator",
+        "username": "Username",
+        "password": "Password",
+        "submit": "Login",
+        "processing": "Processing...",
+        "error": "Login failed. Please check your credentials."
     }
 }

@@ -27,18 +27,38 @@ async function request<T>(endpoint: string, config: RequestConfig = {}): Promise
         });
     }
 
+    // Get token from localStorage
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+
+    const headers: Record<string, string> = {
+        'ngrok-skip-browser-warning': 'true',
+        ...init.headers as Record<string, string>,
+    };
+
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    // Don't set Content-Type for FormData, browser will do it with boundary
+    if (!(init.body instanceof FormData)) {
+        headers['Content-Type'] = 'application/json';
+    }
+
     const response = await fetch(url.toString(), {
         ...init,
-        headers: {
-            'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': 'true', // Bypass ngrok interstitial page
-            ...init.headers,
-        },
+        headers,
     });
 
     if (!response.ok) {
         const error = await response.json().catch(() => ({}));
-        throw new Error(error.message || `HTTP error! status: ${response.status}`);
+
+        // Handle 401 Unauthorized
+        if (response.status === 401 && typeof window !== 'undefined' && !url.pathname.includes('auth/login')) {
+            localStorage.removeItem('token');
+            window.location.href = '/login';
+        }
+
+        throw new Error(error.detail || error.message || `HTTP error! status: ${response.status}`);
     }
 
     return response.json();
@@ -54,19 +74,19 @@ export const api = {
     post: <T>(endpoint: string, data?: unknown) =>
         request<T>(endpoint, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: data instanceof FormData ? data : JSON.stringify(data),
         }),
 
     put: <T>(endpoint: string, data?: unknown) =>
         request<T>(endpoint, {
             method: 'PUT',
-            body: JSON.stringify(data),
+            body: data instanceof FormData ? data : JSON.stringify(data),
         }),
 
     patch: <T>(endpoint: string, data?: unknown) =>
         request<T>(endpoint, {
             method: 'PATCH',
-            body: JSON.stringify(data),
+            body: data instanceof FormData ? data : JSON.stringify(data),
         }),
 
     delete: <T>(endpoint: string) => request<T>(endpoint, { method: 'DELETE' }),

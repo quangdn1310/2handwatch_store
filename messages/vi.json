@@ -236,5 +236,14 @@
                 "cancel": "Hủy"
             }
         }
+    },
+    "auth": {
+        "login": "Đăng nhập",
+        "adminOnly": "Quản trị viên hệ thống",
+        "username": "Tên đăng nhập",
+        "password": "Mật khẩu",
+        "submit": "Đăng nhập",
+        "processing": "Đang xử lý...",
+        "error": "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin."
     }
 }
